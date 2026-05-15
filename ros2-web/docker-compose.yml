@@ -1,0 +1,22 @@
+services:
+  ros2:
+    image: tiryoh/ros2-desktop-vnc:humble
+
+    platform: linux/arm64
+
+    container_name: ros2_humble_web
+
+    ports:
+      - "6080:80"
+
+    environment:
+      - RESOLUTION=1280x720
+
+    shm_size: "2gb"
+
+    volumes:
+      - ./ros2_workspace:/home/ubuntu/ros2_ws
+
+    restart: unless-stopped
+
+  

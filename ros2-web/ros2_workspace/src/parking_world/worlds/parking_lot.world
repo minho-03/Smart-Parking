@@ -1,0 +1,103 @@
+<?xml version="1.0" ?>
+<sdf version='1.7'>
+  <world name='parking_lot_world'>
+
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
+    <plugin name='ignition::gazebo::systems::Physics' filename='libignition-gazebo-physics-system.so'/>
+    <plugin name='ignition::gazebo::systems::UserCommands' filename='libignition-gazebo-user-commands-system.so'/>
+    <plugin name='ignition::gazebo::systems::SceneBroadcaster' filename='libignition-gazebo-scene-broadcaster-system.so'/>
+
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>-6 0 8 0 0.9 0</pose>
+      </camera>
+    </gui>
+
+    <scene>
+      <ambient>0.6 0.6 0.6 1</ambient>
+      <background>0.8 0.8 0.8 1</background>
+      <shadows>false</shadows>
+    </scene>
+
+    <light name='sun_direct' type='directional'>
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.5 0.5 0.5 1</specular>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <model name='custom_ground_plane'>
+      <static>true</static>
+      <link name='link'>
+        <collision name='collision'><geometry><plane><normal>0 0 1</normal><size>30 30</size></plane></geometry></collision>
+        <visual name='visual'>
+          <geometry><plane><normal>0 0 1</normal><size>30 30</size></plane></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name='parking_lot_walls'>
+      <static>true</static>
+
+      <link name='outer_north'>
+        <pose>0 3.0 0.25 0 0 0</pose>
+        <collision name='col'><geometry><box><size>6.2 0.1 0.5</size></box></geometry></collision>
+        <visual name='vis'><geometry><box><size>6.2 0.1 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual>
+      </link>
+      <link name='outer_south'>
+        <pose>0 -3.0 0.25 0 0 0</pose>
+        <collision name='col'><geometry><box><size>6.2 0.1 0.5</size></box></geometry></collision>
+        <visual name='vis'><geometry><box><size>6.2 0.1 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual>
+      </link>
+      <link name='outer_east'>
+        <pose>3.0 0 0.25 0 0 0</pose>
+        <collision name='col'><geometry><box><size>0.1 6.0 0.5</size></box></geometry></collision>
+        <visual name='vis'><geometry><box><size>0.1 6.0 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual>
+      </link>
+      
+      <link name='outer_west_north'>
+        <pose>-3.0 2.0 0.25 0 0 0</pose>
+        <collision name='col'><geometry><box><size>0.1 2.0 0.5</size></box></geometry></collision>
+        <visual name='vis'><geometry><box><size>0.1 2.0 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual>
+      </link>
+      <link name='outer_west_south'>
+        <pose>-3.0 -2.0 0.25 0 0 0</pose>
+        <collision name='col'><geometry><box><size>0.1 2.0 0.5</size></box></geometry></collision>
+        <visual name='vis'><geometry><box><size>0.1 2.0 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual>
+      </link>
+
+      <link name='divider_top_1'><pose>-1.5 2.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.1 2.0 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.1 2.0 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
+      <link name='divider_top_2'><pose>0.0 2.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.1 2.0 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.1 2.0 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
+      <link name='divider_top_3'><pose>1.5 2.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.1 2.0 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.1 2.0 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
+      <link name='divider_bottom_1'><pose>-1.5 -2.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.1 2.0 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.1 2.0 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
+      <link name='divider_bottom_2'><pose>0.0 -2.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.1 2.0 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.1 2.0 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
+      <link name='divider_bottom_3'><pose>1.5 -2.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.1 2.0 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.1 2.0 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
+
+      <link name='gate_wall_n1'><pose>-2.875 1.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.25 0.1 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.25 0.1 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
+      <link name='gate_wall_n2'><pose>-1.625 1.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.25 0.1 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.25 0.1 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
+      <link name='gate_wall_n3'><pose>-1.375 1.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.25 0.1 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.25 0.1 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
+      <link name='gate_wall_n4'><pose>-0.125 1.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.25 0.1 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.25 0.1 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
+      <link name='gate_wall_n5'><pose>0.125 1.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.25 0.1 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.25 0.1 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
+      <link name='gate_wall_n6'><pose>1.375 1.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.25 0.1 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.25 0.1 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
+      <link name='gate_wall_n7'><pose>1.625 1.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.25 0.1 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.25 0.1 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
+      <link name='gate_wall_n8'><pose>2.875 1.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.25 0.1 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.25 0.1 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
+
+      <link name='gate_wall_s1'><pose>-2.875 -1.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.25 0.1 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.25 0.1 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
+      <link name='gate_wall_s2'><pose>-1.625 -1.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.25 0.1 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.25 0.1 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
+      <link name='gate_wall_s3'><pose>-1.375 -1.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.25 0.1 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.25 0.1 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
+      <link name='gate_wall_s4'><pose>-0.125 -1.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.25 0.1 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.25 0.1 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
+      <link name='gate_wall_s5'><pose>0.125 -1.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.25 0.1 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.25 0.1 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
+      <link name='gate_wall_s6'><pose>1.375 -1.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.25 0.1 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.25 0.1 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
+      <link name='gate_wall_s7'><pose>1.625 -1.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.25 0.1 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.25 0.1 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
+      <link name='gate_wall_s8'><pose>2.875 -1.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.25 0.1 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.25 0.1 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
+
+    </model>
+  </world>
+</sdf>
