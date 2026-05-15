@@ -1,1 +1,18 @@
-venv/
+# --- ROS2 빌드 및 로그 부산물 (필수 제외) ---
+**/ros2_workspace/build/
+**/ros2_workspace/install/
+**/ros2_workspace/log/
+
+# --- 파이썬 가상환경 및 캐시 ---
+**/venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# --- macOS 시스템 파일 ---
+.DS_Store
+
+# --- VS Code 설정 및 기타 툴 플러그인 ---
+.vscode/
+.idea/
