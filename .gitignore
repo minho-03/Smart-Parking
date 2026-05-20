@@ -16,3 +16,5 @@ __pycache__/
 # --- VS Code 설정 및 기타 툴 플러그인 ---
 .vscode/
 .idea/
+
+echo "ros2-web/ros2_workspace/src/turtlebot3/" >> .gitignore
