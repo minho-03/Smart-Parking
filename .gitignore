@@ -17,4 +17,4 @@ __pycache__/
 .vscode/
 .idea/
 
-echo "ros2-web/ros2_workspace/src/turtlebot3/" >> .gitignore
+**/ros2-web/ros2_workspace/src/turtlebot3/
