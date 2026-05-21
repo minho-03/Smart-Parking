@@ -103,5 +103,89 @@
       <link name='gate_wall_s8'><pose>2.875 -1.0 0.25 0 0 0</pose><collision name='col'><geometry><box><size>0.25 0.1 0.5</size></box></geometry></collision><visual name='vis'><geometry><box><size>0.25 0.1 0.5</size></box></geometry><material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual></link>
 
     </model>
+
+    <model name='parked_cars'>
+      <static>true</static>
+      
+      <link name='car1_red'>
+        <pose>-2.25 2.0 0.2 0 0 0</pose> <collision name='col'><geometry><box><size>1.0 1.3 0.4</size></box></geometry></collision>
+        <visual name='vis'>
+          <geometry><box><size>1.0 1.3 0.4</size></box></geometry>
+          <material><ambient>0.8 0.1 0.1 1</ambient><diffuse>0.8 0.1 0.1 1</diffuse></material>
+        </visual>
+      </link>
+      
+      <link name='car2_blue'>
+        <pose>0.75 2.0 0.2 0 0 0</pose>
+        <collision name='col'><geometry><box><size>1.0 1.3 0.4</size></box></geometry></collision>
+        <visual name='vis'>
+          <geometry><box><size>1.0 1.3 0.4</size></box></geometry>
+          <material><ambient>0.1 0.3 0.8 1</ambient><diffuse>0.1 0.3 0.8 1</diffuse></material>
+        </visual>
+      </link>
+      
+      <link name='car3_yellow'>
+        <pose>-2.25 -2.0 0.2 0 0 0</pose>
+        <collision name='col'><geometry><box><size>1.0 1.3 0.4</size></box></geometry></collision>
+        <visual name='vis'>
+          <geometry><box><size>1.0 1.3 0.4</size></box></geometry>
+          <material><ambient>0.8 0.8 0.1 1</ambient><diffuse>0.8 0.8 0.1 1</diffuse></material>
+        </visual>
+      </link>
+      
+      <link name='car4_green'>
+        <pose>0.75 -2.0 0.2 0 0 0</pose>
+        <collision name='col'><geometry><box><size>1.0 1.3 0.4</size></box></geometry></collision>
+        <visual name='vis'>
+          <geometry><box><size>1.0 1.3 0.4</size></box></geometry>
+          <material><ambient>0.1 0.6 0.2 1</ambient><diffuse>0.1 0.6 0.2 1</diffuse></material>
+        </visual>
+      </link>
+      
+    </model>
+
+    <model name='aisle_obstacles'>
+      <static>true</static>
+      
+      <link name='pillar1_orange'>
+        <pose>-1.0 0.0 0.2 0 0 0</pose> <collision name='col'>
+          <geometry>
+            <cylinder>
+              <radius>0.15</radius> <length>0.4</length>  </cylinder>
+          </geometry>
+        </collision>
+        <visual name='vis'>
+          <geometry>
+            <cylinder>
+              <radius>0.15</radius>
+              <length>0.4</length>
+            </cylinder>
+          </geometry>
+          <material><ambient>1.0 0.5 0.0 1</ambient><diffuse>1.0 0.5 0.0 1</diffuse></material>
+        </visual>
+      </link>
+
+      <link name='pillar2_orange'>
+        <pose>1.0 0.0 0.2 0 0 0</pose>
+        <collision name='col'>
+          <geometry>
+            <cylinder>
+              <radius>0.15</radius>
+              <length>0.4</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name='vis'>
+          <geometry>
+            <cylinder>
+              <radius>0.15</radius>
+              <length>0.4</length>
+            </cylinder>
+          </geometry>
+          <material><ambient>1.0 0.5 0.0 1</ambient><diffuse>1.0 0.5 0.0 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    
   </world>
 </sdf>
